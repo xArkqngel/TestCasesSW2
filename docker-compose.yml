@@ -1,0 +1,32 @@
+version: '1.0'
+services:
+  test_backend:
+    container_name: test_backend
+    image: test/test_template:1
+    build:
+      context: .
+    ports:
+      - "3001:3001"
+    environment:
+      - EXTERNAL_PORT=3001
+      - PGUSER=admin
+      - PGPASSWORD=admin
+      - PGDATABASE=db_test
+      - PGHOST=test_db
+    volumes:
+      - ./src/:/optional/src
+    depends_on:
+      - test_db
+  test_db:
+    container_name: test_db
+    image: postgres:12.1
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=db_test
+    volumes:
+      - test_data:/var/lib/postgresql/data
+volumes:
+  test_data: {}
