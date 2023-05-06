@@ -21,15 +21,6 @@ const Person = db.define(
 				isEmail: true
 			}
 		},
-		last_name:{
-			type: Sequelize.STRING,
-			allowNull: false
-		},
-		is_admin:{
-			type: Sequelize.BOOLEAN,
-			allowNull: true,
-			defaultValue: false
-		},
 		password:{
 			type: Sequelize.STRING,
 			allowNull: true

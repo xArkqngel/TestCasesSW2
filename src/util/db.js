@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const process = require('process');
 
 const sequelize = new Sequelize(
-	process.env.PGDATABASE || 'db_cows',
+	process.env.PGDATABASE || 'db_test',
 	process.env.PGUSER || 'admin',
 	process.env.PGPASSWORD || 'xark123',
 	{
