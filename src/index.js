@@ -42,3 +42,5 @@ app.use('/persons', require('./routes/person_routes'));
 		console.log(error);
 	}
 })();
+
+export default app; // add this line

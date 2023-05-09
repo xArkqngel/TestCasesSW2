@@ -25,7 +25,7 @@ const loginUser = async () => {
         return false;
     }
 };
-module.exports = { loginUser };
+
 
 const registerUser = async () => {
     var register = document.getElementById("RegForm");
@@ -56,3 +56,5 @@ loginButton.addEventListener('click', (e) => {
     e.preventDefault();
     loginUser();
 });
+
+module.exports = { loginUser };
