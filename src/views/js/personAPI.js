@@ -1,3 +1,5 @@
+import app from "../../index";
+
 const getUserCredentials = (form) => {
     var formData = new FormData(form);
     const data = {};
@@ -10,6 +12,14 @@ const getUserCredentials = (form) => {
 const loginUser = async () => {
     var login = document.getElementById("LoginForm");
     const user = getUserCredentials(login);
+    const response = await loginF(user);
+    if (response) {
+        window.alert('login successful!');
+    } else {
+        window.alert('login failed!');
+    }
+};
+export const loginF = async (user) =>{
     const response = await fetch('http://127.0.0.1:3001/persons/login', {
         method: 'POST',
         headers: {
@@ -18,13 +28,11 @@ const loginUser = async () => {
         body: JSON.stringify(user)
     });
     if (response.ok) {
-        window.alert('login successful!');
         return true;
     } else {
-        window.alert('login failed!');
         return false;
     }
-};
+}
 
 
 const registerUser = async () => {
@@ -45,7 +53,7 @@ const registerUser = async () => {
     }
 };
 
-var registerButton = document.querySelector("#regButton");
+/**var registerButton = document.querySelector("#regButton");
 registerButton.addEventListener('click', (e) => {
     e.preventDefault();
     registerUser();
@@ -55,6 +63,5 @@ var loginButton = document.querySelector("#loginButton");
 loginButton.addEventListener('click', (e) => {
     e.preventDefault();
     loginUser();
-});
-
-module.exports = { loginUser };
+});*/
+export default loginF();
