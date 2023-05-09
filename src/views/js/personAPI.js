@@ -19,10 +19,13 @@ const loginUser = async () => {
     });
     if (response.ok) {
         window.alert('login successful!');
+        return true;
     } else {
         window.alert('login failed!');
+        return false;
     }
 };
+module.exports = { loginUser };
 
 const registerUser = async () => {
     var register = document.getElementById("RegForm");
@@ -36,6 +39,7 @@ const registerUser = async () => {
     });
     if (response.ok) {
         window.alert('Registration successful!');
+        window.location.href("/src/views/html/home.html")
     } else {
         window.alert('Registration failed!');
     }
@@ -52,4 +56,3 @@ loginButton.addEventListener('click', (e) => {
     e.preventDefault();
     loginUser();
 });
-
