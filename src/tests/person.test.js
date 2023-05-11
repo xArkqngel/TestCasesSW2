@@ -37,8 +37,8 @@ describe('Test for Register', () => {
 
     test('Register Successful', async () => {
         const user = {
-            name: 'Julio',
-            email: 'julio@gmail.com',
+            name: 'Julia',
+            email: 'julia@gmail.com',
             password: 'Password123'
         };
         const result = await registerF(user);
