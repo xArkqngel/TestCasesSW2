@@ -12,7 +12,15 @@ const getUserCredentials = (form) => {
 const loginUser = async () => {
     var login = document.getElementById("LoginForm");
     const user = getUserCredentials(login);
-    const response = loginF(user)
+    const response = await fetch('http://127.0.0.1:3001/persons/login', {
+		method: 'POST',
+		body: JSON.stringify(user),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).then((response) => {
+		return response;
+	});
     if (response) {
         window.alert('login successful!');
     } else {
@@ -23,7 +31,13 @@ const loginUser = async () => {
 const registerUser = async () => {
     var register = document.getElementById("RegForm");
     const user = getUserCredentials(register);
-    const response = registerF(user)
+    const response = await fetch('http://127.0.0.1:3001/persons/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
     if (response) {
         window.alert('register successful!');
     } else {

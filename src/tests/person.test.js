@@ -16,30 +16,11 @@ describe('Test the POST methods', () => {
         expect(response.statusCode).toBe(400);
     });
 });*/
-describe('Test for login',() =>{
-    test('successful login', async () => {
-        const result = await loginF({ mail: 'admin', password: 'admin' });
-        expect(result).toBe(true);
-    });
-
-    test('failed login with password', async () => {
-        const result = await loginF({ mail: 'admin', password: 'wrongpassword' });
-        expect(result).toBe(false);
-    });
-    test('failed login with mail', async () => {
-        const result = await loginF({ mail: 'testuser', password: 'admin' });
-        expect(result).toBe(false);
-    });
-    test('failed login', async () => {
-        const result = await loginF({ mail: 'testuser', password: 'wrongpassword' });
-        expect(result).toBe(false);
-    });
-});
 describe('Test for Register', () => {
     test('Mail invalid', async () => {
         const user = {
             name: 'Andres Ruiz',
-            mail: 'andres.ruiz@gmail',
+            email: 'andres.ruiz@gmail',
             password: 'Password123'
         };
         await expect(registerF(user)).rejects.toThrow('Invalid email address');
@@ -48,7 +29,7 @@ describe('Test for Register', () => {
     test('Password Invalid', async () => {
         const user = {
             name: 'Andres Ruiz',
-            mail: 'andres.ruiz@gmail.com',
+            email: 'andres.ruiz@gmail.com',
             password: 'password'
         };
         await expect(registerF(user)).rejects.toThrow('Password incorrect');
@@ -56,11 +37,32 @@ describe('Test for Register', () => {
 
     test('Register Successful', async () => {
         const user = {
-            name: 'Andres Ruiz',
-            mail: 'andres.ruiz@gmail.com',
+            name: 'a',
+            email: 'a@gmail.com',
             password: 'Password123'
         };
         const result = await registerF(user);
         expect(result).toBe(true);
+    });
+});
+
+
+describe('Test for login',() =>{
+    test('successful login', async () => {
+        const result = await loginF({ email: 'john@example.com', password: 'password123' });
+        expect(result).toBe(true);
+    });
+
+    test('failed login with password', async () => {
+        const result = await loginF({ email: 'admin@gmail.com', password: 'wrongpassword' });
+        expect(result).toBe(false);
+    });
+    test('failed login with mail', async () => {
+        const result = await loginF({ email: 'admin', password: 'Password123' });
+        expect(result).toBe(false);
+    });
+    test('failed login', async () => {
+        const result = await loginF({ email: 'admin', password: 'wrongpassword' });
+        expect(result).toBe(false);
     });
 });

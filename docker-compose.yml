@@ -10,7 +10,7 @@ services:
     environment:
       - EXTERNAL_PORT=3001
       - PGUSER=admin
-      - PGPASSWORD=admin
+      - PGPASSWORD=xark123
       - PGDATABASE=db_test
       - PGHOST=test_db
     volumes:
@@ -24,7 +24,7 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
+      - POSTGRES_PASSWORD=xark123
       - POSTGRES_DB=db_test
     volumes:
       - test_data:/var/lib/postgresql/data

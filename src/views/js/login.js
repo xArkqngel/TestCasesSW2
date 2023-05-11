@@ -10,7 +10,7 @@ export const loginF = async (user) =>{
 }
 export const registerF = async (user) =>{
     const mailRegex = /^\S+@\S+\.\S+$/;
-    if (!mailRegex.test(user.mail)) {
+    if (!mailRegex.test(user.email)) {
         throw new Error('Invalid email address');
     }
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
