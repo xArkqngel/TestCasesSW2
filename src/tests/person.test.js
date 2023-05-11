@@ -19,8 +19,8 @@ describe('Test the POST methods', () => {
 describe('Test for Register', () => {
     test('Mail invalid', async () => {
         const user = {
-            name: 'Andres Ruiz',
-            email: 'andres.ruiz@gmail',
+            name: 'b',
+            email: 'b@gmail',
             password: 'Password123'
         };
         await expect(registerF(user)).rejects.toThrow('Invalid email address');
@@ -28,8 +28,8 @@ describe('Test for Register', () => {
 
     test('Password Invalid', async () => {
         const user = {
-            name: 'Andres Ruiz',
-            email: 'andres.ruiz@gmail.com',
+            name: 'b',
+            email: 'b@gmail.com',
             password: 'password'
         };
         await expect(registerF(user)).rejects.toThrow('Password incorrect');
@@ -37,8 +37,8 @@ describe('Test for Register', () => {
 
     test('Register Successful', async () => {
         const user = {
-            name: 'a',
-            email: 'a@gmail.com',
+            name: 'b',
+            email: 'b@gmail.com',
             password: 'Password123'
         };
         const result = await registerF(user);
@@ -49,12 +49,12 @@ describe('Test for Register', () => {
 
 describe('Test for login',() =>{
     test('successful login', async () => {
-        const result = await loginF({ email: 'john@example.com', password: 'password123' });
+        const result = await loginF({ email: 'a@gmail.com', password: 'Password123' });
         expect(result).toBe(true);
     });
 
     test('failed login with password', async () => {
-        const result = await loginF({ email: 'admin@gmail.com', password: 'wrongpassword' });
+        const result = await loginF({ email: 'a@gmail.com', password: 'wrongpassword' });
         expect(result).toBe(false);
     });
     test('failed login with mail', async () => {
