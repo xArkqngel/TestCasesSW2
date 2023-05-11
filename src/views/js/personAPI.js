@@ -1,4 +1,4 @@
-import app from "../../index";
+import {loginF, registerF} from "./login";
 
 const getUserCredentials = (form) => {
     var formData = new FormData(form);
@@ -12,49 +12,27 @@ const getUserCredentials = (form) => {
 const loginUser = async () => {
     var login = document.getElementById("LoginForm");
     const user = getUserCredentials(login);
-    const response = await loginF(user);
+    const response = loginF(user)
     if (response) {
         window.alert('login successful!');
     } else {
         window.alert('login failed!');
     }
 };
-export const loginF = async (user) =>{
-    const response = await fetch('http://127.0.0.1:3001/persons/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-    });
-    if (response.ok) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 
 const registerUser = async () => {
     var register = document.getElementById("RegForm");
     const user = getUserCredentials(register);
-    const response = await fetch('http://127.0.0.1:3001/persons/create', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-    });
-    if (response.ok) {
-        window.alert('Registration successful!');
-        window.location.href("/src/views/html/home.html")
+    const response = registerF(user)
+    if (response) {
+        window.alert('register successful!');
     } else {
-        window.alert('Registration failed!');
+        window.alert('register failed!');
     }
 };
 
-/**var registerButton = document.querySelector("#regButton");
-registerButton.addEventListener('click', (e) => {
+var registerButton = document.querySelector("#regButton");
+    registerButton.addEventListener('click', (e) => {
     e.preventDefault();
     registerUser();
 });
@@ -63,5 +41,4 @@ var loginButton = document.querySelector("#loginButton");
 loginButton.addEventListener('click', (e) => {
     e.preventDefault();
     loginUser();
-});*/
-export default loginF();
+});

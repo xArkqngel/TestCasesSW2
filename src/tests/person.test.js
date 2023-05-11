@@ -1,5 +1,6 @@
 import app from '../index.js';
-import {loginF} from "../views/js/personAPI";
+import {loginF} from "../views/js/login";
+import {registerF} from "../views/js/login";
 import request from 'supertest';
 /**describe('Test the GET methods', () => {
     test('It should response the GET method', async () => {
@@ -15,20 +16,51 @@ describe('Test the POST methods', () => {
         expect(response.statusCode).toBe(400);
     });
 });*/
-describe('loginF function', () => {
-    const mockUser = { mail: 'testuser', password: 'testpassword' };
-    test('should return true on successful login', async () => {
-        global.fetch = jest.fn(() =>
-            Promise.resolve({ ok: true })
-        );
-        const result = await loginF(mockUser);
+describe('Test for login',() =>{
+    test('successful login', async () => {
+        const result = await loginF({ mail: 'admin', password: 'admin' });
         expect(result).toBe(true);
     });
-    test('should return false on failed login', async () => {
-        global.fetch = jest.fn(() =>
-            Promise.resolve({ ok: false })
-        );
-        const result = await loginF(mockUser);
+
+    test('failed login with password', async () => {
+        const result = await loginF({ mail: 'admin', password: 'wrongpassword' });
         expect(result).toBe(false);
+    });
+    test('failed login with mail', async () => {
+        const result = await loginF({ mail: 'testuser', password: 'admin' });
+        expect(result).toBe(false);
+    });
+    test('failed login', async () => {
+        const result = await loginF({ mail: 'testuser', password: 'wrongpassword' });
+        expect(result).toBe(false);
+    });
+});
+describe('Test for Register', () => {
+    test('Mail invalid', async () => {
+        const user = {
+            name: 'Andres Ruiz',
+            mail: 'andres.ruiz@gmail',
+            password: 'Password123'
+        };
+        await expect(registerF(user)).rejects.toThrow('Invalid email address');
+    });
+
+    test('Password Invalid', async () => {
+        const user = {
+            name: 'Andres Ruiz',
+            mail: 'andres.ruiz@gmail.com',
+            password: 'password'
+        };
+        await expect(registerF(user)).rejects.toThrow('Password incorrect');
+    });
+
+    test('Register Successful', async () => {
+        const user = {
+            name: 'Andres Ruiz',
+            mail: 'andres.ruiz@gmail.com',
+            password: 'Password123'
+        };
+        const result = await registerF(user);
+        expect(result).toBe(true);
     });
 });
