@@ -8,3 +8,5 @@ const PersonRepository = {
     deletePerson: (id) => {},
     login: (email, password) => {}
 };
+
+module.exports = PersonRepository;
