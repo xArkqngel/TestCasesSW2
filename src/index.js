@@ -29,15 +29,16 @@ app.use((req, res, next) => {
 
 
 //*PERSONS
-app.use('/persons', require('./routes/person_routes'));
+app.use('/persons', require('./person/infrastructure/routes/person_routes'));
 
 (async () => {
 	try {
 		await sequelize.sync(
 			{ force: false} //Reset db every time
 		);
-		console.log('Listening on PORT: ' + process.env.EXTERNAL_PORT);
-		app.listen(process.env.EXTERNAL_PORT); //DEF in docker.compose.yml
+		const PORT = process.env.EXTERNAL_PORT || 3010;
+		console.log('Listening on PORT: ' + PORT);
+		app.listen(PORT); //DEF in docker.compose.yml
 	} catch (error) {
 		console.log(error);
 	}
