@@ -7,16 +7,17 @@ class PersonRepositoryImpl {
     constructor() {
     }
     getPerson (id) {}
+
     async getAllPersons ()  {
         console.log('getAllPersons: [GET] /persons/');
-	try {
-		const allPersons = await Person.findAll();
-		console.log('OK getAllPersons: ', allPersons.map(persons => persons.dataValues));
-		return allPersons;
-	} catch (error) {
-		console.log('Error in getAllPersons ' + 'Persons:', error);
-		return error;
-	}
+        try {
+            const allPersons = await Person.findAll();
+            console.log('OK getAllPersons: ', allPersons.map(persons => persons.dataValues));
+            return allPersons;
+        } catch (error) {
+            console.log('Error in getAllPersons ' + 'Persons:', error);
+            return error;
+        }
     }
 
     async createPerson (person)  {

@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../../../util/db');
 const bcrypt = require('bcrypt');
+const Order = require('../../../order/infrastructure/repositories/order_dto')
 const Person = db.define(
 	'persons',
 	{
@@ -37,5 +38,8 @@ const Person = db.define(
 		}
 	}
 );
+
+Person.hasMany(Order,{foreignKey:'person_id'});
+Order.belongsTo(Person,{foreignKey:'person_id'});
 
 module.exports = Person;
