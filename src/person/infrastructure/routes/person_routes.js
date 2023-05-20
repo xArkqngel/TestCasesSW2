@@ -52,7 +52,7 @@ const login = async (req, res) => {
 				error: 'Username and password are required'
 			});
 		}
-		const user = await login_usecase(personRepository, email, password);
+		const user = await login_usecase(personRepository, req.body.email, req.body.password);
 		if (user) {
 			return res.status(200).json({'Login': 'Success', 'User': user });
 		} else {
