@@ -1,6 +1,6 @@
 const OrderProduct = require('./order_product_dto');
 
-class OrderProduct{
+class orderProductRepositoryImpl{
     constructor(){
     }
 
@@ -53,3 +53,5 @@ class OrderProduct{
     }
     
 }
+
+module.exports = orderProductRepositoryImpl;
