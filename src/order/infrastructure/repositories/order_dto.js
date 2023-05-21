@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../../../util/db');
-const OrderProduct = require('../../../order_product/infrastructure/repositories/order_product_dto');
+
 const Order = db.define(
     'orders',
     {
@@ -16,8 +16,6 @@ const Order = db.define(
     }
 );
 
-//TODO: Order has many
-Order.hasMany(OrderProduct, {foreignKey: 'order_id'});
-OrderProduct.belongsTo(Order, {foreignKey: 'order_id'});
+
 
 module.exports = Order;

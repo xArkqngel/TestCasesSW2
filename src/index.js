@@ -34,6 +34,12 @@ app.use('/persons', require('./person/infrastructure/routes/person_routes'));
 //*ORDERS
 app.use('/orders', require('./order/infrastructure/routes/order_routes'));
 
+//*PRODUCTS
+app.use('/products', require('./product/infrastructure/routes/product_routes'));
+
+//*ORDER_PRODUCTS
+app.use('/order_products', require('./order_product/infrastructure/routes/order_product_routes'));
+
 (async () => {
 	try {
 		await sequelize.sync(
