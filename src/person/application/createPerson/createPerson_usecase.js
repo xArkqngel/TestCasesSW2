@@ -6,6 +6,7 @@ const createPersonUseCase = async (personRepository, name, email, password) => {
     try {
         const person = new Person(name, email, password);
         await personRepository.createPerson(person);
+        return true
     } catch (error) {
         throw new Error(error.message);
     }

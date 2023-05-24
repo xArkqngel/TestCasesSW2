@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E-commerce</title>
+    <link rel="stylesheet" href="/src/person/infrastructure/views/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
+  family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+            $("#header").load("/src/person/infrastructure/views/header.html");
+            $("#footer").load("/src/person/infrastructure/views/footer.html");
+        });
+    </script>
+</head>
+<body>
+<div id="header"></div>
+<div class="shopping-cart">
+    <div class="title">
+        Carro de compras
+    </div>
+    <div id="oder"></div>
+    <script>
+        fetch('http://127.0.0.1:3001/products')
+            .then(res => res.json())
+            .then(json => {
+                const productTable = document.querySelector('#order');
+
+                json.forEach(product => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'item';
+                    const descriptionDiv = document.createElement('div');
+                    descriptionDiv.className = 'description';
+                    const nameSpan = document.createElement('span');
+                    nameSpan.textContent = product.name;
+                    const detailsSpan = document.createElement('span');
+                    detailsSpan.textContent = product.description;
+                    descriptionDiv.appendChild(nameSpan);
+                    descriptionDiv.appendChild(detailsSpan);
+
+                    const quantityDiv = document.createElement('div');
+                    quantityDiv.className = 'quantity';
+                    const plusButton = document.createElement('button');
+                    plusButton.className = 'plus-btn';
+                    plusButton.setAttribute('type', 'button');
+                    plusButton.setAttribute('name', 'button');
+                    plusButton.textContent = '+';
+                    const quantityInput = document.createElement('input');
+                    quantityInput.setAttribute('type', 'text');
+                    quantityInput.setAttribute('name', 'name');
+                    quantityInput.value = '1';
+
+                    const minusButton = document.createElement('button');
+                    minusButton.className = 'minus-btn';
+                    minusButton.setAttribute('type', 'button');
+                    minusButton.setAttribute('name', 'button');
+                    minusButton.textContent = '-';
+
+                    quantityDiv.appendChild(plusButton);
+                    quantityDiv.appendChild(quantityInput);
+                    quantityDiv.appendChild(minusButton);
+
+                    const totalPriceDiv = document.createElement('div');
+                    totalPriceDiv.className = 'total-price';
+                    totalPriceDiv.textContent = `$${product.price}`;
+
+                    itemDiv.appendChild(descriptionDiv);
+                    itemDiv.appendChild(quantityDiv);
+                    itemDiv.appendChild(totalPriceDiv);
+
+                    productTable.appendChild(itemDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching products:', error);
+            });
+    </script>
+    <div class="item">
+        <div class="description">
+            <span>Leche</span>
+            <span>deslactosada</span>
+        </div>
+        <div class="quantity">
+            <button class="plus-btn" type="button" name="button">+</button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">-</button>
+        </div>
+        <div class="total-price">$5</div>
+    </div>
+</div>
+</body>
+</html>

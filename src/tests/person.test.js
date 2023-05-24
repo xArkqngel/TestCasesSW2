@@ -1,68 +1,29 @@
-import app from '../index.js';
-import {loginF} from "../views/js/login";
-import {registerF} from "../views/js/login";
-import request from 'supertest';
-/**describe('Test the GET methods', () => {
-    test('It should response the GET method', async () => {
-        const response = await request(app).get('/persons');
-        expect(response.statusCode).toBe(200);
-    });
+const createPersonUseCase = require('../person/application/createPerson/createPerson_usecase');
+const PersonRepository = require('../person/infrastructure/repositories/person_repository_impl');
+const Person = require('../person/domain/entities/Person');
+const loginUserUseCase = require("../person/application/login/login_usecase");
+
+const person = new Person('Andres', 'Andres@gmail.com', 'password');
+const response = await fetch('http://127.0.0.1:3001/persons/login', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(person)
 });
+/**describe('PersonRepository', () => {
 
+    test('Create Person Use case', async () => {
+        const person = new Person('Julio', 'Julio@gmail.com', 'password');
+        const response = await fetch('http://127.0.0.1:3001/persons/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(person)
+        });
+        expect(response).toBe(true);
+    });
+});**/
 
-describe('Test the POST methods', () => {
-    test('It should response the POST method, fail due to empty data', async () => {
-        const response = await request(app).post('/persons/create');
-        expect(response.statusCode).toBe(400);
-    });
-});*/
-describe('Test for Register', () => {
-    test('Mail invalid', async () => {
-        const user = {
-            name: 'b',
-            email: 'b@gmail',
-            password: 'Password123'
-        };
-        await expect(registerF(user)).rejects.toThrow('Invalid email address');
-    });
-
-    test('Password Invalid', async () => {
-        const user = {
-            name: 'b',
-            email: 'b@gmail.com',
-            password: 'password'
-        };
-        await expect(registerF(user)).rejects.toThrow('Password incorrect');
-    });
-
-    test('Register Successful', async () => {
-        const user = {
-            name: 'reikon',
-            email: 'reikon@gmail.com',
-            password: 'Password123'
-        };
-        const result = await registerF(user);
-        expect(result).toBe(true);
-    });
-});
-
-
-describe('Test for login',() =>{
-    test('successful login', async () => {
-        const result = await loginF({ email: 'a@gmail.com', password: 'Password123' });
-        expect(result).toBe(true);
-    });
-
-    test('failed login with password', async () => {
-        const result = await loginF({ email: 'a@gmail.com', password: 'wrongpassword' });
-        expect(result).toBe(false);
-    });
-    test('failed login with mail', async () => {
-        const result = await loginF({ email: 'admin', password: 'Password123' });
-        expect(result).toBe(false);
-    });
-    test('failed login', async () => {
-        const result = await loginF({ email: 'admin', password: 'wrongpassword' });
-        expect(result).toBe(false);
-    });
-});
+//Crear se

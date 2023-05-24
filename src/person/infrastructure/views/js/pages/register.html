@@ -1,0 +1,41 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E-commerce</title>
+    <link rel="stylesheet" href="/src/person/infrastructure/views/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
+  family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+            $("#header").load("/src/person/infrastructure/views/header.html");
+            $("#footer").load("/src/person/infrastructure/views/footer.html");
+        });
+    </script>
+</head>
+<body>
+<div id="header"></div>
+<div class="logIn">
+    <div class="row">
+        <div class="form-container">
+            <div id="RegisterSlide">
+                <form id="RegForm">
+                    <input type="text" placeholder="Nombre" id="name" name="name">
+                    <input type="text" placeholder="Correo electronico" id="email" name="email">
+                    <input type="password" placeholder="Contraseña" id="password" name="password">
+                    <h4>La contraseña debe tener al menos 8 caracteres y contener al menos una letra mayúscula, una letra minúscula y un dígito</h4>
+                    <button type="submit" class="btn" id="regButton" onclick="registerU()">Crear cuenta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+</body>
+    <script src="/src/person/infrastructure/views/js/app.js"></script>
+</html>

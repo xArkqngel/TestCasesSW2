@@ -1,0 +1,358 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins',sans-serif;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+nav{
+    flex: 1;
+    text-align: right;
+}
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+a{
+    text-decoration: none;
+    color: #394867;
+}
+p{
+    color: #394867;
+}
+.container{
+    max-width: 1100px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+.col-2 img{
+    max-width: 100%;
+    padding: 50px 0;
+}
+.col-2 h1{
+    font-size: 50px;
+    line-height: 60px;
+    margin: 25px 0;
+}
+.logIn{
+    background-color: rgba(0,0,0,.1);
+    padding: 50px;
+}
+.btn{
+    display: inline-block;
+    background: #394867;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: backgroung 0.5s;
+}
+.btn:hover{
+    background: #394867;
+}
+.footer{
+    background: #000;
+    color: #8a8a8a;
+    font-size: 14px;
+    padding: 60px 0 20px;
+}
+.footer p{
+    color: #8a8a8a;
+}
+.footer h3{
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+.footer-col-1, .footer-col-2, .footer-col-3{
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+.footer-col-1{
+    flex-basis: 30%;
+}
+.footer-col-2{
+    flex: 1;
+    text-align: center;
+}
+.footer-col-3{
+    flex-basis: 12%;
+    text-align: center;
+}
+ul{
+    list-style-type: none;
+}
+.form-container{
+    background: white;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.form-container span{
+    font-weight: bold;
+    padding: 0 10px;
+    color: #555;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+}
+.form-btn{
+    display: inline-block;
+}
+.form-container form{
+    max-width: 300px;
+    padding: 0 20px;
+    position: absolute;
+    top: 30px;
+    transition: transform 1s;
+}
+form input{
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+}
+form .btn{
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 14px;
+
+}
+form .btn:focus{
+    outline: none;
+}
+
+form a{
+    font-size: 14px;
+}
+
+.home{
+    background-color: #ffffff;
+    background-size: cover ;
+    background-position: right center;
+}
+.home .form-container{
+    background-color: #ffffff;
+    width: 1100px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+#welcome{
+    color: #394867;
+    font-size: 40px;
+}
+h4{
+    list-style-type: none;
+    font-size: 10px;
+    text-align: left;
+    color: #555;
+}
+.listing-section, .cart-section {
+    width: 80%;
+    float: left;
+    padding: 1%;
+    border-bottom: 0.01em solid #dddbdb;
+}
+
+.product {
+    float: left;
+    width: 38%;
+    border-radius: 2%;
+    margin: 4%;
+}
+
+.product:hover {
+    box-shadow: 1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow:    1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);
+}
+
+.text-box {
+    width: 100%;
+    float: left;
+    border: 0.01em solid #dddbdb;
+    border-radius: 0 0 2% 2%;
+    padding: 1em;
+}
+
+.item, .price {
+    clear: left;
+    width: 100%;
+    text-align: center;
+}
+
+.price {
+    color: Grey;
+}
+
+.description, label, button, input {
+    float: left;
+    clear: left;
+    width: 100%;
+    font-weight: 300;
+    font-size: 1em;
+    text-align: center;
+    margin: 0.2em auto;
+}
+
+input:focus {
+    outline-color: #fdf;
+}
+
+label {
+    width: 60%;
+}
+
+.text-box input {
+    width: 15%;
+    clear: none;
+}
+
+.text-box button {
+    margin-top: 1em;
+}
+
+button {
+    padding: 2%;
+    background-color: #E4EBEC;
+    border: none;
+    border-radius: 2%;
+}
+
+button:hover {
+    bottom: 0.1em;
+}
+
+button:focus {
+    outline: 0;
+}
+
+button:active {
+    bottom: 0;
+    background-color: #fdf;
+}
+.table-heading, .table-content {
+    width: 100%;
+    margin: 1% 12.25%;
+    float: left;
+    background-color: #ffffff;
+    height: 40px;
+
+}
+.table-heading h2 {
+    text-align: center;
+}
+.shopping-cart {
+    width: 60%;
+    height: 423px;
+    margin: 80px auto;
+    background: #FFFFFF;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    height: 60px;
+    border-bottom: 1px solid #E1E8EE;
+    padding: 20px 30px;
+    color: #5E6977;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.item {
+    padding: 20px 30px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.item:nth-child {
+    border-top:  1px solid #E1E8EE;
+    border-bottom:  1px solid #E1E8EE;
+}
+.description {
+    padding-top: 10px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.description span {
+    display: block;
+    font-size: 14px;
+    color: #43484D;
+    font-weight: 400;
+}
+
+.description span:first-child {
+    margin-bottom: 5px;
+}
+.description span:last-child {
+    font-weight: 300;
+    margin-top: 8px;
+    color: #86939E;
+}
+.quantity {
+    margin-right: 10px;
+    align-items: center;
+    display: flex;
+}
+.quantity input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+}
+
+.quantity button[class*=btn] {
+    width: 30px;
+    height: 30px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.total-price {
+    width: 83px;
+    text-align: center;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: bold;
+}
