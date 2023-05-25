@@ -12,10 +12,19 @@ const cors = require('cors');
 
 const path = require('path');
 
+const session = require('express-session');
+
+const store = new session.MemoryStore;
+
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 
-
+app.use(session({
+	secret: 'secret',
+	cookie: { maxAge: 60000 },
+	saveUninitialized: false,
+	store
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,6 +37,7 @@ app.use(cors(
 
 //Set headers to allow cross origin resource sharing
 app.use((req, res, next) => {
+	console.log(store);
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
