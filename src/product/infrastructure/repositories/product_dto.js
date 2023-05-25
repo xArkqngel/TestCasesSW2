@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../../../util/db');
+const OrderProduct = require('../../../order_product/infrastructure/repositories/order_product_dto');
 
 const Product = db.define(
     'products',
@@ -23,7 +24,5 @@ const Product = db.define(
         }
     }
 );
-
-
 
 module.exports = Product;

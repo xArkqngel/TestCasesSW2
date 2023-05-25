@@ -1,4 +1,4 @@
-const Product = require('../repositories/product_dto');
+const Product = require('../../../util/infrastructure/repositories/index').Product;
 
 class orderProductRepositoryImpl{
     constructor(){

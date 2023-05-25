@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
+const { sequelize, Sequelize } = require('sequelize');
 const db = require('../../../util/db');
-const Order = require('../../../order/infrastructure/repositories/order_dto');
-const Product = require('../../../product/infrastructure/repositories/product_dto');
+const Order = require('../../../util/infrastructure/repositories/index').Order;
+const Product = require('../../../util/infrastructure/repositories/index').Product;
 
 const OrderProduct = db.define(
     'order_products',
@@ -21,8 +21,5 @@ const OrderProduct = db.define(
         }
     }
 );
-
-OrderProduct.belongsTo(Order,{foreignKey:'order_id'});
-OrderProduct.belongsTo(Product,{foreignKey:'product_id'});
 
 module.exports = OrderProduct;

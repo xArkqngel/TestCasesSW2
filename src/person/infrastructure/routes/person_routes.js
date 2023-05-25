@@ -69,5 +69,10 @@ const login = async (req, res) => {
 
 router.post('/login', login);
 
+const session = async (req, res) => {
+	res.render('index');
+};
+
+router.get('/session', session);
 
 module.exports = router;

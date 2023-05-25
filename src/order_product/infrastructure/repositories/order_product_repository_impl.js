@@ -1,4 +1,4 @@
-const OrderProduct = require('./order_product_dto');
+const OrderProduct = require('../../../util/infrastructure/repositories/index').OrderProduct;
 
 class orderProductRepositoryImpl{
     constructor(){
@@ -43,7 +43,7 @@ class orderProductRepositoryImpl{
         console.log('getOrderProduct: [GET] /order_products/:id');
         console.log('orderProductId :', id);
         try{
-            const orderProduct = await OrderProduct.findOne({where:{id}});
+            const orderProduct = await OrderProduct.findByPk(id);
             console.log('Ok getOrderProduct: ', {orderProduct});
             return (orderProduct);
         }catch (error){
