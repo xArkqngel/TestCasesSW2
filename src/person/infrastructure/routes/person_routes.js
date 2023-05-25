@@ -42,37 +42,41 @@ const createPerson = async(req, res)=>{
 
 router.post('/create', createPerson);
 
-const login = async (req, res) => {
+  const login = async (req, res) => {
 	console.log('login: [POST] /persons/login');
+	console.log(req.sessionID);
 	const personRepository = personRepositoryInjector();
 	try {
-		const { email, password } = req.body;
-		if (!email || !password) {
-			return res.status(400).json({
-				error: 'Username and password are required'
-			});
-		}
-		const user = await login_usecase(personRepository, req.body.email, req.body.password);
-		if (user) {
-			return res.status(200).json({'Login': 'Success', 'User': user });
-		} else {
-			return res.status(401).json({
-				error: 'Invalid email or password'
-			});
-		}
-	} catch (err) {
-		return res.status(500).json({
-			error: 'Failed to login user'
+	  const { email, password } = req.body;
+	  if (!email || !password) {
+		return res.status(400).json({
+		  error: 'Username and password are required'
 		});
+	  }
+	  const user = await login_usecase(personRepository, req.body.email, req.body.password)
+		.catch((err) => {
+		  throw new Error('Failed to login user'); // Manually throw the error
+		});
+  
+	  if (user) {
+		req.session.authenticated = true;
+		req.session.user = user;
+		res.json(req.session);
+		return res.status(200).json({ 'Login': 'Success', 'User': user });
+	  } else {
+		return res.status(401).json({
+		  error: 'Invalid email or password'
+		});
+	  }
+	} catch (err) {
+	  return res.status(500).json({
+		error: 'Failed to login user'
+	  });
 	}
-};
+  };
+  
 
 router.post('/login', login);
 
-const session = async (req, res) => {
-	res.render('index');
-};
-
-router.get('/session', session);
 
 module.exports = router;
