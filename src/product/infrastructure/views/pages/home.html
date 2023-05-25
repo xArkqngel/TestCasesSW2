@@ -21,63 +21,14 @@
 <div id="header"></div>
 <div class="home">
     <div class="row">
-        <!--<div class="form-container">
+        <div class="form-container">
             <h1 id="welcome">Bienvenido</h1>
-        </div>-->
+        </div>
         <div class="listing-section" id="productListing"></div>
-        <script>
-            fetch('http://127.0.0.1:3001/products')
-                .then(res => res.json())
-                .then(json => {
-                    const productListing = document.querySelector('#productListing');
-                    json.forEach(product => {
-                        const productDiv = document.createElement('div');
-                        productDiv.className = 'product';
-                        const textBox = document.createElement('div');
-                        textBox.className = 'text-box';
-                        const itemName = document.createElement('h2');
-                        itemName.className = 'item';
-                        itemName.textContent = product.name;
-                        const itemPrice = document.createElement('h3');
-                        itemPrice.className = 'price';
-                        itemPrice.textContent = `$${product.price}`;
-                        const itemDescription = document.createElement('p');
-                        itemDescription.className = 'description';
-                        itemDescription.textContent = product.description;
-
-                        const quantityLabel = document.createElement('label');
-                        quantityLabel.setAttribute('for', `item-${product.id}-quantity`);
-                        quantityLabel.textContent = 'Cantidad:';
-
-                        const quantityInput = document.createElement('input');
-                        quantityInput.setAttribute('type', 'text');
-                        quantityInput.value = '1';
-                        quantityInput.className = 'quantity-input';
-
-                        const addButton = document.createElement('button');
-                        addButton.setAttribute('type', 'button');
-                        addButton.textContent = 'Añadir a carrito';
-                        addButton.className = 'button';
-                        addButton.onclick(addProduct(product.name))
-
-                        textBox.appendChild(itemName);
-                        textBox.appendChild(itemPrice);
-                        textBox.appendChild(itemDescription);
-                        textBox.appendChild(quantityLabel);
-                        textBox.appendChild(quantityInput);
-                        textBox.appendChild(addButton);
-
-                        productDiv.appendChild(textBox);
-                        productListing.appendChild(productDiv);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching products:', error);
-                });
-        </script>
+        <button id="button" onclick="showProducts()">Mostrar productos</button>
     </div>
 </div>
 <div id="footer"></div>
-    <script src="/src/product/infrastructure/views/js/components/cartShop.js"></script>
+    <script src="/src/product/infrastructure/views/js/components/productsShop.js"></script>
 </body>
 </html>

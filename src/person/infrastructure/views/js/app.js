@@ -15,7 +15,7 @@ const registerU = async () => {
                 body: JSON.stringify({"name":name,"email":email,"password":password})
             });
             form.reset();
-            window.location.href="./pages/home.html";
+            window.location.href="http://localhost:63342/TestCasesSW2/src/product/infrastructure/views/pages/home.html";
         } catch (error) {
             console.error(error);
             alert('Failed to create person');
@@ -38,7 +38,7 @@ const loginU = async () =>{
                 body: JSON.stringify({"email":email,"password":password})
             });
             form.reset();
-            window.location.href="./pages/home.html";
+            window.location.href="http://localhost:63342/TestCasesSW2/src/product/infrastructure/views/pages/home.html";
         } catch (error) {
             console.error(error);
             alert('Failed to create person');

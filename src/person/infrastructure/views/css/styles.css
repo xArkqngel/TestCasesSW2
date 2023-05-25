@@ -287,8 +287,8 @@ button:active {
     border-bottom: 1px solid #E1E8EE;
     padding: 20px 30px;
     color: #5E6977;
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 250;
 }
 
 .item {
@@ -307,7 +307,9 @@ button:active {
 .description {
     padding-top: 10px;
     margin-right: 10px;
-    width: 200px;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .description span {
