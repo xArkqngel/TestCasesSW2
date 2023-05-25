@@ -1,5 +1,5 @@
 
-const Order = require('./order_dto');
+const Order = require('../../../util/infrastructure/repositories/index').Order;
 
 class OrderRepositoryImpl{
     constructor(){
